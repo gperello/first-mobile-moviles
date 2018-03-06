@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget iA blank PhoneGap appd="first.mobile.moviles" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>First Moviles</name>
+    <description>
+        Gestion de Viajes de First SRL.
+    </description>
+    <author email="gperello@gmail.com" href="http://www.firstsrl.com.ar">
+        First Moviles
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <plugin name="cordova-plugin-mauron85-background-geolocation" spec="~2.3.2">
+        <variable name="GOOGLE_PLAY_SERVICES_VERSION" value="11.0.1" />
+        <variable name="ALWAYS_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
+        <variable name="MOTION_USAGE_DESCRIPTION" value="This app requires motion detection" />
+    </plugin>
+	<gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
+	<platform name="android">
+	  <resource-file src="google-services.json" target="app/google-services.json" />
+	</platform>
+    <engine name="ios" spec="~4.5.4" />
+    <engine name="android" spec="~7.1.0" />
+</widget>
