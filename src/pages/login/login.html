@@ -1,0 +1,43 @@
+  <ion-header>
+    <ion-navbar color="first1"  hideBackButton="true">
+      <ion-title style="text-align:center">
+        <img src="assets/imgs/first-logo.png">
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding style="background-color:#dadada">
+  <ion-row>
+    <ion-col text-center>
+      <h1>INICIO DE SESION</h1>
+    </ion-col>
+  </ion-row>
+  <div>
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input placeholder="Usuario" name="username" id="loginField"
+                         type="text" required [(ngModel)]="username"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Clave" name="password" id="passwordField"
+                         type="password" required [(ngModel)]="password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <span>{{error}}</span>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="first1" full large type="submit" [disabled]="!loginForm.form.valid">
+            Iniciar Sesión
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>

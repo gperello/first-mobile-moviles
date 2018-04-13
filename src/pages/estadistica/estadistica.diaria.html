@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="first1">
+    <ion-title style="text-align:center">
+        <img src="assets/imgs/first-logo.png">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+  <ion-content>
+    <h4 style="text-align:center">estadistica del mes {{Mes}}</h4>
+    <ion-list>
+    <button ion-item *ngFor="let item of List" (click)="getViajes(item)">
+        <ion-note  item-start color="dark">Dia {{item.Dia}} - ({{item.Cantidad}}) Viajes</ion-note>
+        <ion-note item-end color="danger">{{item.TotalFacturado}}</ion-note>
+    </button>
+    <ion-item>
+        <h2>Total Facturado</h2>
+        <ion-note item-end color="dark">{{ getTotal }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

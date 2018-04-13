@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-navbar color="first1">
+      <ion-title style="text-align:center">
+          <img src="assets/imgs/first-logo.png">
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <h2 style="text-align:center">Datos del viaje</h2>
+    <ion-list inset>
+        <ion-item>        
+            <ion-note item-start color="primary"> {{Viaje.Reserva}}</ion-note>
+            <ion-note item-end color="dark"> {{Viaje.FechaHora}}</ion-note>
+        </ion-item>
+        <ion-item>        
+            <ion-badge item-start color="{{setColorFormaPago(Viaje.FormaPago)}}"> {{Viaje.FormaPago}}</ion-badge>
+            <ion-badge item-end color="{{setColorEstado(Viaje.EstadoId)}}"> {{Viaje.Estado}}</ion-badge>
+        </ion-item>
+    </ion-list>
+    <ion-card>
+        <ion-item>
+            <h2>Cliente: {{Viaje.Cliente}}</h2>
+            <p>Pasajero: {{Viaje.Pasajero}}</p>
+            <p [hidden]="ocultarCampo(Viaje.NombreAtributoFacturacion)">{{Viaje.NombreAtributoFacturacion}}: {{Viaje.AtributoFacturacion}}</p>
+            <p [hidden]="ocultarCampo(Viaje.NombreAtributo1)">{{Viaje.NombreAtributo1}}: {{Viaje.Atributo1}}</p>
+            <p [hidden]="ocultarCampo(Viaje.NombreAtributo2)">{{Viaje.NombreAtributo2}}: {{Viaje.Atributo2}}</p>
+            <p [hidden]="ocultarCampo(Viaje.NombreAtributo3)">{{Viaje.NombreAtributo3}}: {{Viaje.Atributo3}}</p>
+        </ion-item>
+        <ion-card-content>
+            <p><b>Origen:</b> {{Viaje.Origen}}</p>
+            <p><b>Destino:</b> {{Viaje.Destino}}</p>
+            <p><b>Observaciones:</b> {{Viaje.Observaciones}}
+              <ion-label [hidden]="!Viaje.Regreso"><b>CON REGRESO</b></ion-label>
+              <ion-label [hidden]="!Viaje.Importante"><b>IMPORTANTE</b></ion-label>
+              <ion-label [hidden]="!Viaje.SolicitaVoucher"><b>SOLICITA VOUCHER</b></ion-label>          
+            </p>
+        </ion-card-content>
+    </ion-card>
+    <ion-list>
+        <ion-item>
+            {{ Viaje.TarifaNombre }}
+        </ion-item>
+        <ion-item>
+            <h2>Viaje</h2>
+            <p>{{ Viaje.Km }} Km.</p>
+            <span color="dark" item-end> {{ Viaje.ImporteKm }}</span>
+        </ion-item>  
+        <ion-item>
+            <h2>Espera</h2>
+            <p>{{ Viaje.Espera }} Min.</p>
+            <span color="dark" item-end> {{ Viaje.ImporteEspera }}</span>
+        </ion-item> 
+        <button ion-item>
+            <h2>Peajes</h2>
+            <span color="dark" item-end> {{ Viaje.Peajes }}</span>
+        </button> 
+        <button ion-item>
+            <h2>Estacionamiento</h2>
+            <span color="dark" item-end> {{ Viaje.Estacionamiento }}</span>
+        </button> 
+        <ion-item>
+            <h2>Total</h2>
+            <span color="dark" item-end><b color="danger">{{ SumTotal }}</b></span>
+        </ion-item>  
+    </ion-list>
+        
+</ion-content>

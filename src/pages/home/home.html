@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="first1" hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style="text-align:center">
+        <img src="assets/imgs/first-logo.png">
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="Logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+      <ion-item>        
+        <h2>{{User.NombreUsuario}}</h2>
+        <ion-badge item-end color="{{User.Estado}}">{{User.NumeroMovil}}</ion-badge>
+      </ion-item>
+    <ion-item>
+    <ion-label><p>{{Direccion}}</p></ion-label>
+  </ion-item>
+  </ion-list>
+  <h2 style="text-align:center">Viajes Asignados</h2>
+  <h4 style="text-align:center" [hidden]="NoHayViajes">no hay viajes asignados</h4>
+  <ion-card *ngFor="let item of Viajes">
+      <button ion-item (click)="setReserva(item.Reserva)">
+          <h3>{{item.Reserva}} - {{item.FechaHora}} - <ion-badge color="{{setcolor(item.EstadoId)}}">{{item.Estado}}</ion-badge></h3>
+          <h3>{{item.Cliente}} - {{item.FormaPago}}</h3>
+          <p style="display:block">{{item.Origen}}</p>
+      </button>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar color="first1">
+    <ion-title style="text-align:center">
+        <img src="assets/imgs/first-logo.png">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [hidden]="CierreOculto">
+   <h2 style="text-align:center">Cierre del viaje</h2>
+  <ion-list>
+    <ion-item>
+      Reserva: {{ Cierre.Reserva }}
+    </ion-item>  
+    <ion-item>
+     {{ Cierre.TarifaNombre }}
+    </ion-item>
+    <ion-item>
+      <h2>Viaje</h2>
+      <p>{{ Cierre.Km }} Km.</p>
+      <span color="dark" item-end> {{ Cierre.ImporteKm }}</span>
+    </ion-item>  
+    <ion-item>
+      <h2>Espera</h2>
+      <p>{{ Cierre.Espera }} Min.</p>
+      <span color="dark" item-end> {{ Cierre.ImporteEspera }}</span>
+    </ion-item> 
+    <button ion-item (click)="showImporte('Ingresar Peajes','', 1)">
+      <h2>Peajes</h2>
+      <span color="dark" item-end> {{ Cierre.Peajes }}</span>
+    </button> 
+    <button ion-item (click)="showImporte('Ingresar Estacionamiento','', 2)">
+      <h2>Estacionamiento</h2>
+      <span color="dark" item-end> {{ Cierre.Estacionamiento }}</span>
+    </button> 
+    <ion-item>
+      <h2>Total</h2>
+      <span color="dark" item-end><b color="danger">{{ SumTotal }}</b></span>
+    </ion-item>  
+  </ion-list>
+  <ion-grid>
+  <ion-row>
+    <ion-col col-12>
+        <button large ion-button block icon-start  color="secondary" (click)="Cerrar()">
+            <ion-icon name="checkmark"></ion-icon>
+            Cerrar
+          </button>
+    </ion-col>
+</ion-row>
+</ion-grid>
+
+</ion-content>
