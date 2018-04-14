@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">644865268568-vc7s9d2403qemfplpuqhslcsbdb38o0g.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://first-gestion-de-viajes.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">644865268568</string>
+    <string name="google_api_key" translatable="false">AIzaSyBmac0X3_wzSdP9WS54bjBEe-wUQLlSTfY</string>
+    <string name="google_app_id" translatable="false">1:644865268568:android:111e5a706d265631</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBmac0X3_wzSdP9WS54bjBEe-wUQLlSTfY</string>
+    <string name="google_storage_bucket" translatable="false">first-gestion-de-viajes.appspot.com</string>
+</resources>

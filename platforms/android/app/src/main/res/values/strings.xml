@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">First Moviles</string>
+    <string name="launcher_name">@string/app_name</string>
+    <string name="activity_name">@string/launcher_name</string>
+    <string name="account_name">@string/app_name</string>
+    <string name="account_type">first.moviles.ar.account</string>
+    <string name="content_authority">first.moviles.ar</string>
+</resources>
