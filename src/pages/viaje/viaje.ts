@@ -1,27 +1,48 @@
-import { Component } from '@angular/core';
-import { NavParams, NavController, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavParams, NavController, AlertController, Platform, Navbar } from 'ionic-angular';
 import { Viaje } from '../../services/clases';
 import { PageHome } from '../home/home';
 import { PageCierre } from '../cierre/cierre';
 import { CustomServices } from '../../services/custom.services';
 import { PageLogin } from '../login/login';
+import { PageMapa } from '../mapa/mapa';
+import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-viaje',
   templateUrl: 'viaje.html'
 })
 export class PageViaje {
-  public Viaje:Viaje;
+  @ViewChild(Navbar) navBar: Navbar;
+  public Viaje:Viaje = new Viaje();
+  public scrollHeight:number;
 
   constructor(private navParams: NavParams,protected nav: NavController, protected service:CustomServices, 
-    private alert:AlertController) {
-      this.Viaje = this.navParams.data;
+    private alert:AlertController, private callNumber: CallNumber,private platform: Platform) {
+      this.service.getViaje(this.navParams.data.reserva, (data) =>{
+        this.Viaje = data;
+
+        
+      });
       this.service.OnNotAuthenticate = () => {
         this.nav.setRoot(PageLogin);
       };
+      this.platform.ready().then((readySource) => {
+        this.scrollHeight = 585 - 84;
+      });
 
   }
+ionViewDidLoad() {
+    this.setBackButtonAction()
+}
 
+//Method to override the default back button action
+setBackButtonAction(){
+  this.navBar.backButtonClick = () => {
+  //Write here wherever you wanna do
+   this.nav.setRoot(PageHome);
+  }
+}
   setHome(){
     this.nav.setRoot(PageHome);
   }
@@ -99,6 +120,14 @@ export class PageViaje {
 setcolorfp():string{
   if(this.Viaje == null) return "";
   this.service.setColorFormaPago(this.Viaje.FormaPagoId);
+}
+
+llamar(){
+  this.callNumber.callNumber(this.Viaje.Telefono, true)
+}
+
+getMapa(){
+  this.nav.push(PageMapa, { reserva: this.Viaje.Reserva });
 }
 
 }

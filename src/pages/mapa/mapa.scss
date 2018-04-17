@@ -4,3 +4,13 @@ ion-content{
     height: 100%;
   }
 }
+ion-toolbar{
+  ion-icon{
+      color: color($colors, light);
+  }
+  span{
+      font-size: 18px;
+      color: color($colors, light);
+  }
+}
+

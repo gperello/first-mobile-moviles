@@ -1,10 +1,12 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform, Navbar } from 'ionic-angular';
 import { Viaje } from '../../services/clases';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { PageLogin } from '../login/login';
 import { PageHome } from '../home/home';
 import { CustomServices } from '../../services/custom.services';
+import { PageViaje } from '../viaje/viaje';
+import { CallNumber } from '@ionic-native/call-number';
 
 
 declare var google;
@@ -15,23 +17,37 @@ declare var google;
   templateUrl: 'mapa.html'
 })
 export class PageMapa {
+  @ViewChild(Navbar) navBar: Navbar;
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   marker1 = new google.maps.Marker;
   marker2 = new google.maps.Marker;
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
-  public Viaje:Viaje;
+  public Viaje:Viaje = new Viaje();
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform,
-    private launchNavigator: LaunchNavigator, protected service:CustomServices) {
-      this.Viaje = this.navParams.data;
-      this.initializeApp();
+    private launchNavigator: LaunchNavigator, protected service:CustomServices, private callNumber: CallNumber) {
+      this.service.getViaje(this.navParams.data.reserva, (data) =>{
+        this.Viaje = data;
+        this.initializeApp();
+      });
       this.service.OnNotAuthenticate = () => {
         this.navCtrl.setRoot(PageLogin);
       };
   }
 
+  ionViewDidLoad() {
+      this.setBackButtonAction()
+  }
+
+  //Method to override the default back button action
+  setBackButtonAction(){
+    this.navBar.backButtonClick = () => {
+    //Write here wherever you wanna do
+    this.navCtrl.setRoot(PageHome);
+    }
+  }
 
   setHome(){
     this.navCtrl.setRoot(PageHome);
@@ -102,6 +118,13 @@ export class PageMapa {
   NavigateDestino(){
     this.launchNavigator.navigate(this.Viaje.Destino, { app: this.launchNavigator.APP.USER_SELECT});
   }
-
+  llamar(){
+    this.callNumber.callNumber(this.Viaje.Telefono, true)
+  }
+  
+  getInfo(){
+    this.navCtrl.push(PageViaje, { reserva: this.Viaje.Reserva });
+  }
+  
 }
 

@@ -1,14 +1,26 @@
 <ion-header>
-    <ion-navbar color="first1" hideBackButton="true">
+    <ion-navbar color="first1">
       <ion-buttons left>
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
       </ion-buttons>
       <ion-title style="text-align:center">
-          <img src="assets/imgs/first-logo.png">
+          Mapa del Viaje
       </ion-title>
     </ion-navbar>
+    <ion-toolbar color="first1">
+        <ion-segment>
+            <ion-segment-button (ionSelect)="getInfo()">
+                <ion-icon name="information-circle"></ion-icon>
+                <span>Info</span>
+            </ion-segment-button>
+            <ion-segment-button (ionSelect)="Llamar()">
+                <ion-icon name="call"></ion-icon>
+                <span>Llamar</span>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
   </ion-header>
   
 <ion-content>

@@ -5,6 +5,7 @@ import { Usuario, ViajeList } from '../../services/clases';
 import { TabsPage } from '../tabs/tabs';
 import { CustomServices } from '../../services/custom.services';
 import { PageLogin } from '../login/login';
+import { PageViaje } from '../viaje/viaje';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class PageHome {
     }
 
     setReserva(reserva) {
-      this.nav.push(TabsPage, { reserva: reserva });
+      this.nav.push(PageViaje, { reserva: reserva });
     }
 
     setcolor(estado):string{
