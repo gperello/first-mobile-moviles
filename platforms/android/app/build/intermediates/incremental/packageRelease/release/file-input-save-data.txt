@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Apr 13 21:15:43 ART 2018
+#Tue Apr 17 14:30:07 ART 2018
 5.base=D\:\\apps\\first-mobile-moviles\\platforms\\android\\app\\build\\intermediates\\assets\\release
 22.path=www/build/vendor.js
 32.set=ASSET

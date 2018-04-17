@@ -5,6 +5,7 @@ import { BaseService } from './base.service';
 
 @Injectable()
 export class BackgroundGeolocationService {
+    UltimaPosicion:number = 0;
     constructor(private backgroundGeolocation: BackgroundGeolocation, private network:Network) { 
     }
 
@@ -17,14 +18,18 @@ export class BackgroundGeolocationService {
             stopOnTerminate: false, // <-- enable this to clear background location settings when the app terminates 
             notificationTitle: 'FIRST SRL',
             notificationText: 'Servicio de transporte de personas',
-            interval: 60000, // <!-- poll for position every minute 
-            fastestInterval: 30000,
+            interval: 30000, // <!-- poll for position every minute 
+            fastestInterval: 15000,
+            activitiesInterval: 30000,
             stopOnStillActivity: false,
         };
 
         this.backgroundGeolocation.configure(config)
         .subscribe((location: BackgroundGeolocationResponse) => {
-            onLocation(location, service);
+            if((this.UltimaPosicion + 25000)  < location.time) {
+                onLocation(location, service);
+                this.UltimaPosicion = location.time;
+            }
             this.backgroundGeolocation.deleteLocation(location.locationId);
             this.backgroundGeolocation.finish(); // FOR IOS ONLY
         });
@@ -47,7 +52,10 @@ export class BackgroundGeolocationService {
        if(this.network.type != 'none'){
             this.backgroundGeolocation.getLocations().then((locations) => {
                 locations.forEach(element => {
-                    onLocation(element, service);
+                    if((this.UltimaPosicion + 25000)  < element.time) {
+                        onLocation(element, service);
+                        this.UltimaPosicion = element.time;
+                    }
                     this.backgroundGeolocation.deleteLocation(element.locationId);
                 });
             });
