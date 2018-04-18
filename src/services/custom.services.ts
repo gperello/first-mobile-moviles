@@ -64,7 +64,7 @@ export class CustomServices extends BaseService{
 
     public initComponent(onsucess?:(data) => void){
         this.getViajes(onsucess);
-        //this.backgroundGeolocation.UpdateLocations(this.setLocation, this);
+        this.backgroundGeolocation.UpdateLocations(this.setLocation, this);
     }
 
       //LOGIN
@@ -72,8 +72,8 @@ export class CustomServices extends BaseService{
         this.ExecuteGetService(this.VALIDAR_USUARIO, [ username, password], data => {
           localStorage.setItem('datos_de_usuario', JSON.stringify(data.User));
           localStorage.setItem('token_de_usuario', data.Token);
-          //this.backgroundGeolocation.Init(this.setLocation, this);
-          //this.push.Init(this.RegistracionFcm, this);
+          this.backgroundGeolocation.Init(this.setLocation, this);
+          this.push.Init(this.RegistracionFcm, this);
           if(onsucess != null)onsucess();
           this.hideLoading();
         }, error => {
@@ -85,7 +85,7 @@ export class CustomServices extends BaseService{
         this.ExecuteGetService(this.LOGOUT, [ localStorage.getItem("token_de_usuario") ], data => { 
           localStorage.removeItem('datos_de_usuario');
           localStorage.removeItem('token_de_usuario');
-          //this.backgroundGeolocation.Stop();
+          this.backgroundGeolocation.Stop();
           onsuccess(data);
         });
     }
