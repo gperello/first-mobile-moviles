@@ -23,21 +23,44 @@
 </ion-toolbar>
 </ion-header>
         
-  <ion-content>
-    <ion-list>
-        <ion-item>        
-            <ion-note item-start color="primary"> {{Viaje.Reserva}}</ion-note>
-            <ion-note item-end color="dark"> {{Viaje.FechaHora}}</ion-note>
-        </ion-item>
-        <ion-item>        
-            <ion-badge item-start color="{{setcolorfp()}}"> {{Viaje.FormaPago}}</ion-badge>
-            <ion-badge item-end color="{{setcolorestado()}}"> {{Viaje.Estado}}</ion-badge>
-        </ion-item>
-        <ion-item [hidden]="VisibleComenzarEspera()">        
-            <h2 item-start>Minutos de Espera</h2>
-            <ion-badge item-end color="secondary"> {{Viaje.Espera}}</ion-badge>
-        </ion-item>
-    </ion-list>
+<ion-content>
+<ion-scroll scrollY="true" style="width: 100%; height: 100%">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6>        
+                <ion-note item-start color="primary" style="font-size: 20px"> {{Viaje.Reserva}}</ion-note>
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+                <ion-note item-end color="dark" style="font-size: 20px"> {{Viaje.FechaHora}}</ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6>        
+                <ion-badge item-start color="{{setColorFormaPago(Viaje.FormaPago)}}"> {{Viaje.FormaPago}}</ion-badge>
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+                <ion-badge item-end color="{{setColorEstado(Viaje.EstadoId)}}"> {{Viaje.Estado}}</ion-badge>
+            </ion-col>
+        </ion-row>
+        <ion-row [hidden]="OcultarCampos()">
+            <ion-col col-4>        
+                    <ion-badge [hidden]="OcultarCampo(Viaje.Regreso)" item-start color="primary">REGRESO</ion-badge>
+            </ion-col>
+            <ion-col col-4 style="text-align: center;">
+                <ion-badge [hidden]="OcultarCampo(Viaje.Importante)" color="danger">IMPORTANTE</ion-badge>
+            </ion-col>
+            <ion-col col-4 style="text-align: right;">
+                <ion-badge [hidden]="OcultarCampo(Viaje.SolicitaVoucher)" item-end color="secondary">VOUCHER</ion-badge>
+            </ion-col>
+        </ion-row>
+        <ion-row [hidden]="VisibleComenzarEspera()">
+            <ion-col col-12>        
+                <span item-start>Minutos de Espera</span>
+                <ion-badge item-end color="secondary"> {{Viaje.Espera}}</ion-badge>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
     <ion-card no-padding>
         <ion-card-content>
             <h2>Cliente: {{Viaje.Cliente}}</h2>
@@ -51,58 +74,60 @@
             <p [hidden]="ocultarIntermedios()" *ngFor="let item of Viaje.Intermedios"><b>Parada en:</b> {{item.Direccion}}</p>
             <p><b>Destino:</b> {{Viaje.Destino}}</p>
             <p><b>Observaciones:</b> {{Viaje.Observaciones}}
-                <ion-label [hidden]="OcultarCampo(Viaje.Regreso)"><b>CON REGRESO</b></ion-label>
+                <!-- <ion-label [hidden]="OcultarCampo(Viaje.Regreso)"><b>CON REGRESO</b></ion-label>
                 <ion-label [hidden]="OcultarCampo(Viaje.Importante)"><b>IMPORTANTE</b></ion-label>
-                <ion-label [hidden]="OcultarCampo(Viaje.SolicitaVoucher)"><b>SOLICITA VOUCHER</b></ion-label>          
+                <ion-label [hidden]="OcultarCampo(Viaje.SolicitaVoucher)"><b>SOLICITA VOUCHER</b></ion-label> -->          
             </p>
         </ion-card-content>
     </ion-card>
-    </ion-content>
+    <div style="height: 120px;"></div>
+</ion-scroll>
+</ion-content>
 
-    <ion-footer [hidden]="VisibleComenzarEspera()">
-        <ion-toolbar>
-            <ion-segment>
-                <button style="width: 50%" ion-button  icon-start color="primary" (click)="ComenzarEspera()">
-                        <ion-icon name="time"></ion-icon>
-                        ESPERA
-                </button>
-                <button style="width: 50%" ion-button block icon-start color="coloritem" (click)="Recargar()">
-                        <ion-icon name="refresh"></ion-icon>
-                        REFRESCAR
-                </button>
-            </ion-segment>
-        </ion-toolbar>
-        <ion-toolbar>
-            <ion-segment>
-                <button ion-button block icon-start color="secondary" (click)="Cerrar()">
-                        <ion-icon name="cash"></ion-icon>
-                        CERRAR VIAJE
-                </button>
-            </ion-segment>
-        </ion-toolbar>
-    </ion-footer>
-    <ion-footer [hidden]="VisibleLlegadaCliente()">
-        <ion-toolbar>
-            <ion-segment>
-                <button ion-button block icon-start  color="secondary" (click)="LlegadaCliente()">
-                        <ion-icon name="checkmark"></ion-icon>
-                        Llegada al cliente
-                </button>
-            </ion-segment>
-        </ion-toolbar>
-    </ion-footer>
-    <ion-footer [hidden]="VisibleAceptarRechazar()">
-        <ion-toolbar>
-            <ion-segment>
-                <button ion-button block icon-start color="secondary" (click)="Aceptar()">
+<ion-footer [hidden]="VisibleComenzarEspera()">
+    <ion-toolbar>
+        <ion-segment>
+            <button style="width: 50%" ion-button  icon-start color="primary" (click)="ComenzarEspera()">
+                    <ion-icon name="time"></ion-icon>
+                    ESPERA
+            </button>
+            <button style="width: 50%" ion-button block icon-start color="coloritem" (click)="Recargar()">
+                    <ion-icon name="refresh"></ion-icon>
+                    REFRESCAR
+            </button>
+        </ion-segment>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-segment>
+            <button ion-button block icon-start color="secondary" (click)="Cerrar()">
+                    <ion-icon name="cash"></ion-icon>
+                    CERRAR VIAJE
+            </button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-footer>
+<ion-footer [hidden]="VisibleLlegadaCliente()">
+    <ion-toolbar>
+        <ion-segment>
+            <button ion-button block icon-start  color="secondary" (click)="LlegadaCliente()">
                     <ion-icon name="checkmark"></ion-icon>
-                    Aceptar
-                </button>
-                <button ion-button block icon-end color="danger" (click)="ConfirmarRechazo()">
-                    Rechazar
-                    <ion-icon name="close"></ion-icon>
-                </button>
-            </ion-segment>
-        </ion-toolbar>
-    </ion-footer>
+                    Llegada al cliente
+            </button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-footer>
+<ion-footer [hidden]="VisibleAceptarRechazar()">
+    <ion-toolbar>
+        <ion-segment>
+            <button ion-button block icon-start color="secondary" (click)="Aceptar()">
+                <ion-icon name="checkmark"></ion-icon>
+                Aceptar
+            </button>
+            <button ion-button block icon-end color="danger" (click)="ConfirmarRechazo()">
+                Rechazar
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-footer>
                         

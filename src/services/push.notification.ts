@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Push } from '@ionic-native/push';
 import { Usuario } from './clases';
 import { CustomServices } from './custom.services';
+import { Vibration } from '@ionic-native/vibration';
+import { Dialogs } from '@ionic-native/dialogs';
 
 @Injectable()
 export class PushNotificationService {
@@ -29,7 +31,7 @@ export class PushNotificationService {
             onRegister(data.registrationId, service);
         });
         pushObject.on('notification').subscribe((data: any) => {
-            
+
         });
         pushObject.on('error').subscribe(error => {
             //this.base.showAlert("ERROR", JSON.stringify(error));

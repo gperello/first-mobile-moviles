@@ -41,5 +41,8 @@ export class PageViajeCerrado {
     setColorFormaPago(fp){
         return this.service.setColorFormaPago(fp);
     }
-
+    OcultarCampos():boolean{
+      return !(this.Viaje.Regreso || this.Viaje.SolicitaVoucher || this.Viaje.Importante);
+    }
+  
 }

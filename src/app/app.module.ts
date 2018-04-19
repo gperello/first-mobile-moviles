@@ -27,6 +27,7 @@ import { PageViajeCerrado } from '../pages/viaje.cerrado/viaje-cerrado';
 import { CallNumber } from '@ionic-native/call-number';
 
 
+
 @NgModule({
   declarations: [
     MyApp,

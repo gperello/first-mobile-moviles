@@ -406,54 +406,57 @@ public final class R {
   public static final class mipmap {
     public static final int icon=0x7f090000;
   }
+  public static final class raw {
+    public static final int beep=0x7f0a0000;
+  }
   public static final class string {
-    public static final int account_name=0x7f0a0000;
-    public static final int account_type=0x7f0a0001;
-    public static final int activity_name=0x7f0a0002;
-    public static final int app_name=0x7f0a0003;
-    public static final int common_google_play_services_enable_button=0x7f0a0004;
-    public static final int common_google_play_services_enable_text=0x7f0a0005;
-    public static final int common_google_play_services_enable_title=0x7f0a0006;
-    public static final int common_google_play_services_install_button=0x7f0a0007;
-    public static final int common_google_play_services_install_text=0x7f0a0008;
-    public static final int common_google_play_services_install_title=0x7f0a0009;
-    public static final int common_google_play_services_notification_ticker=0x7f0a000a;
-    public static final int common_google_play_services_unknown_issue=0x7f0a000b;
-    public static final int common_google_play_services_unsupported_text=0x7f0a000c;
-    public static final int common_google_play_services_update_button=0x7f0a000d;
-    public static final int common_google_play_services_update_text=0x7f0a000e;
-    public static final int common_google_play_services_update_title=0x7f0a000f;
-    public static final int common_google_play_services_updating_text=0x7f0a0010;
-    public static final int common_google_play_services_wear_update_text=0x7f0a0011;
-    public static final int common_open_on_phone=0x7f0a0012;
-    public static final int common_signin_button_text=0x7f0a0013;
-    public static final int common_signin_button_text_long=0x7f0a0014;
-    public static final int content_authority=0x7f0a0015;
-    public static final int default_web_client_id=0x7f0a0016;
-    public static final int fcm_fallback_notification_channel_label=0x7f0a0017;
-    public static final int firebase_database_url=0x7f0a0018;
-    public static final int gcm_defaultSenderId=0x7f0a0019;
-    public static final int google_api_key=0x7f0a001a;
-    public static final int google_app_id=0x7f0a001b;
-    public static final int google_crash_reporting_api_key=0x7f0a001c;
-    public static final int google_storage_bucket=0x7f0a001d;
-    public static final int launcher_name=0x7f0a001e;
-    public static final int status_bar_notification_info_overflow=0x7f0a001f;
+    public static final int account_name=0x7f0b0000;
+    public static final int account_type=0x7f0b0001;
+    public static final int activity_name=0x7f0b0002;
+    public static final int app_name=0x7f0b0003;
+    public static final int common_google_play_services_enable_button=0x7f0b0004;
+    public static final int common_google_play_services_enable_text=0x7f0b0005;
+    public static final int common_google_play_services_enable_title=0x7f0b0006;
+    public static final int common_google_play_services_install_button=0x7f0b0007;
+    public static final int common_google_play_services_install_text=0x7f0b0008;
+    public static final int common_google_play_services_install_title=0x7f0b0009;
+    public static final int common_google_play_services_notification_ticker=0x7f0b000a;
+    public static final int common_google_play_services_unknown_issue=0x7f0b000b;
+    public static final int common_google_play_services_unsupported_text=0x7f0b000c;
+    public static final int common_google_play_services_update_button=0x7f0b000d;
+    public static final int common_google_play_services_update_text=0x7f0b000e;
+    public static final int common_google_play_services_update_title=0x7f0b000f;
+    public static final int common_google_play_services_updating_text=0x7f0b0010;
+    public static final int common_google_play_services_wear_update_text=0x7f0b0011;
+    public static final int common_open_on_phone=0x7f0b0012;
+    public static final int common_signin_button_text=0x7f0b0013;
+    public static final int common_signin_button_text_long=0x7f0b0014;
+    public static final int content_authority=0x7f0b0015;
+    public static final int default_web_client_id=0x7f0b0016;
+    public static final int fcm_fallback_notification_channel_label=0x7f0b0017;
+    public static final int firebase_database_url=0x7f0b0018;
+    public static final int gcm_defaultSenderId=0x7f0b0019;
+    public static final int google_api_key=0x7f0b001a;
+    public static final int google_app_id=0x7f0b001b;
+    public static final int google_crash_reporting_api_key=0x7f0b001c;
+    public static final int google_storage_bucket=0x7f0b001d;
+    public static final int launcher_name=0x7f0b001e;
+    public static final int status_bar_notification_info_overflow=0x7f0b001f;
   }
   public static final class style {
-    public static final int TextAppearance_Compat_Notification=0x7f0b0000;
-    public static final int TextAppearance_Compat_Notification_Info=0x7f0b0001;
-    public static final int TextAppearance_Compat_Notification_Info_Media=0x7f0b0002;
-    public static final int TextAppearance_Compat_Notification_Line2=0x7f0b0003;
-    public static final int TextAppearance_Compat_Notification_Line2_Media=0x7f0b0004;
-    public static final int TextAppearance_Compat_Notification_Media=0x7f0b0005;
-    public static final int TextAppearance_Compat_Notification_Time=0x7f0b0006;
-    public static final int TextAppearance_Compat_Notification_Time_Media=0x7f0b0007;
-    public static final int TextAppearance_Compat_Notification_Title=0x7f0b0008;
-    public static final int TextAppearance_Compat_Notification_Title_Media=0x7f0b0009;
-    public static final int Widget_Compat_NotificationActionContainer=0x7f0b000a;
-    public static final int Widget_Compat_NotificationActionText=0x7f0b000b;
-    public static final int Widget_Support_CoordinatorLayout=0x7f0b000c;
+    public static final int TextAppearance_Compat_Notification=0x7f0c0000;
+    public static final int TextAppearance_Compat_Notification_Info=0x7f0c0001;
+    public static final int TextAppearance_Compat_Notification_Info_Media=0x7f0c0002;
+    public static final int TextAppearance_Compat_Notification_Line2=0x7f0c0003;
+    public static final int TextAppearance_Compat_Notification_Line2_Media=0x7f0c0004;
+    public static final int TextAppearance_Compat_Notification_Media=0x7f0c0005;
+    public static final int TextAppearance_Compat_Notification_Time=0x7f0c0006;
+    public static final int TextAppearance_Compat_Notification_Time_Media=0x7f0c0007;
+    public static final int TextAppearance_Compat_Notification_Title=0x7f0c0008;
+    public static final int TextAppearance_Compat_Notification_Title_Media=0x7f0c0009;
+    public static final int Widget_Compat_NotificationActionContainer=0x7f0c000a;
+    public static final int Widget_Compat_NotificationActionText=0x7f0c000b;
+    public static final int Widget_Support_CoordinatorLayout=0x7f0c000c;
   }
   public static final class styleable {
     /**
@@ -995,8 +998,8 @@ public final class R {
     public static final int SignInButton_scopeUris=2;
   }
   public static final class xml {
-    public static final int authenticator=0x7f0d0000;
-    public static final int config=0x7f0d0001;
-    public static final int syncadapter=0x7f0d0002;
+    public static final int authenticator=0x7f0e0000;
+    public static final int config=0x7f0e0001;
+    public static final int syncadapter=0x7f0e0002;
   }
 }

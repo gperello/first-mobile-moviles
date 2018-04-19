@@ -143,7 +143,8 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-whitelist": "1.3.3",
   "uk.co.workingedge.phonegap.plugin.launchnavigator": "4.2.0",
-  "phonegap-plugin-push": "2.2.2"
+  "phonegap-plugin-push": "2.2.2",
+  "cordova-plugin-vibration": "3.1.0"
 };
 // BOTTOM OF METADATA
 });

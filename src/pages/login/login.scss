@@ -1,3 +1,9 @@
 page-login {
-
+    ion-content{
+        background-image: url('../assets/imgs/02.jpg');
+        -webkit-background-image: url('../assets/imgs/02.jpg');
+    }
+    .inputlogin{
+        opacity: 0.8;
+    }
 }

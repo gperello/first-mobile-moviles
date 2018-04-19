@@ -1,40 +1,53 @@
 <ion-header>
     <ion-navbar color="first1">
-      <ion-title style="text-align:center">
-          <img src="assets/imgs/first-logo.png">
+      <ion-title>
+            Datos del viaje
       </ion-title>
     </ion-navbar>
   </ion-header>
   
   <ion-content>
-    <h2 style="text-align:center">Datos del viaje</h2>
-    <ion-list inset>
-        <ion-item>        
-            <ion-note item-start color="primary"> {{Viaje.Reserva}}</ion-note>
-            <ion-note item-end color="dark"> {{Viaje.FechaHora}}</ion-note>
-        </ion-item>
-        <ion-item>        
-            <ion-badge item-start color="{{setColorFormaPago(Viaje.FormaPago)}}"> {{Viaje.FormaPago}}</ion-badge>
-            <ion-badge item-end color="{{setColorEstado(Viaje.EstadoId)}}"> {{Viaje.Estado}}</ion-badge>
-        </ion-item>
-    </ion-list>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6>        
+                <ion-note item-start color="primary" style="font-size: 20px"> {{Viaje.Reserva}}</ion-note>
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+                <ion-note item-end color="dark" style="font-size: 20px"> {{Viaje.FechaHora}}</ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6>        
+                <ion-badge item-start color="{{setColorFormaPago(Viaje.FormaPago)}}"> {{Viaje.FormaPago}}</ion-badge>
+            </ion-col>
+            <ion-col col-6 style="text-align: right;">
+                <ion-badge item-end color="{{setColorEstado(Viaje.EstadoId)}}"> {{Viaje.Estado}}</ion-badge>
+            </ion-col>
+        </ion-row>
+        <ion-row [hidden]="OcultarCampos()">
+            <ion-col col-4>        
+                    <ion-badge [hidden]="ocultarCampo(Viaje.Regreso)" item-start color="primary">REGRESO</ion-badge>
+            </ion-col>
+            <ion-col col-4 style="text-align: center;">
+                <ion-badge [hidden]="ocultarCampo(Viaje.Importante)" color="danger">IMPORTANTE</ion-badge>
+            </ion-col>
+            <ion-col col-4 style="text-align: right;">
+                <ion-badge [hidden]="ocultarCampo(Viaje.SolicitaVoucher)" item-end color="secondary">VOUCHER</ion-badge>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
     <ion-card>
-        <ion-item>
+        <ion-card-content>
             <h2>Cliente: {{Viaje.Cliente}}</h2>
             <p>Pasajero: {{Viaje.Pasajero}}</p>
             <p [hidden]="ocultarCampo(Viaje.NombreAtributoFacturacion)">{{Viaje.NombreAtributoFacturacion}}: {{Viaje.AtributoFacturacion}}</p>
             <p [hidden]="ocultarCampo(Viaje.NombreAtributo1)">{{Viaje.NombreAtributo1}}: {{Viaje.Atributo1}}</p>
             <p [hidden]="ocultarCampo(Viaje.NombreAtributo2)">{{Viaje.NombreAtributo2}}: {{Viaje.Atributo2}}</p>
             <p [hidden]="ocultarCampo(Viaje.NombreAtributo3)">{{Viaje.NombreAtributo3}}: {{Viaje.Atributo3}}</p>
-        </ion-item>
-        <ion-card-content>
+            <hr/>
             <p><b>Origen:</b> {{Viaje.Origen}}</p>
             <p><b>Destino:</b> {{Viaje.Destino}}</p>
-            <p><b>Observaciones:</b> {{Viaje.Observaciones}}
-              <ion-label [hidden]="!Viaje.Regreso"><b>CON REGRESO</b></ion-label>
-              <ion-label [hidden]="!Viaje.Importante"><b>IMPORTANTE</b></ion-label>
-              <ion-label [hidden]="!Viaje.SolicitaVoucher"><b>SOLICITA VOUCHER</b></ion-label>          
-            </p>
+            <p><b>Observaciones:</b> {{Viaje.Observaciones}}</p>
         </ion-card-content>
     </ion-card>
     <ion-list>

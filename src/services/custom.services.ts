@@ -6,6 +6,7 @@ import { PushNotificationService } from "./push.notification";
 import { BackgroundGeolocationService } from "./background.geolocation";
 import { Injectable } from "@angular/core";
 
+
 @Injectable()
 export class CustomServices extends BaseService{
     constructor(protected http:Http, protected alert:AlertController, 
@@ -133,4 +134,5 @@ export class CustomServices extends BaseService{
             RegistrationId: regid
         });
     }
+
 }

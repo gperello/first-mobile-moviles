@@ -113,14 +113,17 @@ setBackButtonAction(){
   OcultarCampo(campo:string):boolean{
     return this.service.ocultarCampo(campo);
   }
-  setcolorestado():string{
+  OcultarCampos():boolean{
+    return !(this.Viaje.Regreso || this.Viaje.SolicitaVoucher || this.Viaje.Importante);
+  }
+  setColorEstado():string{
     if(this.Viaje == null) return "";
     this.service.setColorEstado(this.Viaje.EstadoId);
-}
-setcolorfp():string{
-  if(this.Viaje == null) return "";
-  this.service.setColorFormaPago(this.Viaje.FormaPagoId);
-}
+  }
+  setColorFormaPago():string{
+    if(this.Viaje == null) return "";
+    this.service.setColorFormaPago(this.Viaje.FormaPagoId);
+  }
 
 llamar(){
   this.callNumber.callNumber(this.Viaje.Telefono, true)

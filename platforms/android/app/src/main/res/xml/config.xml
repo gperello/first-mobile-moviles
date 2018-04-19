@@ -64,6 +64,7 @@
     <splash density="port-hdpi" src="resources/android/splash/screen-hdpi-portrait.png" />
     <splash density="port-xhdpi" src="resources/android/splash/screen-xhdpi-portrait.png" />
     <resource-file src="google-services.json" target="app/google-services.json" />
+    <resource-file src="resources/android/raw/beep.mp3" target="app/src/main/res/raw/beep.mp3" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />

@@ -49,13 +49,13 @@
       "ANDROID_SUPPORT_V13_VERSION": "27.+",
       "FCM_VERSION": "11.6.2",
       "PACKAGE_NAME": "first.moviles.ar"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "first.moviles.ar"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-actionsheet": {
-      "PACKAGE_NAME": "first.moviles.ar"
-    },
-    "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "first.moviles.ar"
     }
   }
