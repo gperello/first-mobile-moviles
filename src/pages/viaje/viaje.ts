@@ -130,4 +130,8 @@ getMapa(){
   this.nav.push(PageMapa, { reserva: this.Viaje.Reserva });
 }
 
+ocultarIntermedios(){
+  this.service.ocultarArray(this.Viaje.Intermedios);
+}
+
 }

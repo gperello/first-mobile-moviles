@@ -180,8 +180,11 @@ export class BaseService {
   }
 
   //OCULTAR CAMPOS
-  public ocultarCampo(campo:string):boolean{
-    return (campo == null || campo == undefined || campo.trim().length == 0);
+  public ocultarCampo(campo):boolean{
+    return (campo == null || campo == undefined || campo.toString().trim().length == 0 || campo == false);
+  }
+  public ocultarArray(array:Array<any>):boolean{
+    return (array == null || array == undefined || array.length == 0);
   }
 
   //SET COLOR

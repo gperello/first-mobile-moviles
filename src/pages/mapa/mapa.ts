@@ -20,8 +20,8 @@ export class PageMapa {
   @ViewChild(Navbar) navBar: Navbar;
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  marker1 = new google.maps.Marker;
-  marker2 = new google.maps.Marker;
+  markers:Array<any> = [];
+  //marker2 = new google.maps.Marker;
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
   public Viaje:Viaje = new Viaje();
@@ -76,34 +76,60 @@ export class PageMapa {
   }
 
   calculateAndDisplayRoute(page:PageMapa) {
+    var waypts = [];
+    if(page.Viaje.Intermedios != null){
+      page.Viaje.Intermedios.forEach(element => {
+        var arrint = element.Posicion.split(" ");
+        var posint = new google.maps.LatLng(parseFloat(arrint[1]), parseFloat(arrint[0]));
+        waypts.push({
+            location: posint,
+            stopover: false
+        });
+      });
+    }
     page.directionsService.route({
       origin: page.Viaje.Origen,
       destination: page.Viaje.Destino,
-      travelMode: 'DRIVING'
+      travelMode: 'DRIVING',
+      waypoints: waypts
     }, (response, status) => {
       if (status === 'OK') {
+        page.markers.forEach(element => {
+          element.setMap(null);
+        });
+        page.markers = [];
         page.directionsDisplay.setOptions({
             directions: response,
             draggable: false
         });
         var arr1 = page.Viaje.OrigenPosicion.split(' ');
-        page.marker1 = new google.maps.Marker({
+        page.markers.push(new google.maps.Marker({
           position: { lng: parseFloat(arr1[0]), lat: parseFloat(arr1[1]) },
           map: page.map,
           icon: "assets/imgs/icono-azul.png"
-        })
-        page.marker1.addListener('mousedown', function(){
+        }).addListener('mousedown', function(){
           page.launchNavigator.navigate(page.Viaje.Origen, { app: page.launchNavigator.APP.USER_SELECT});
-        });
+        }));
         var arr2 = page.Viaje.DestinoPosicion.split(' ');
-        page.marker2 = new google.maps.Marker({
+        page.markers.push(new google.maps.Marker({
           position: { lng: parseFloat(arr2[0]), lat: parseFloat(arr2[1]) },
           map: page.map,
           icon: "assets/imgs/icono-rojo.png"
-        })
-        page.marker2.addListener('mousedown',function(){
+        }).addListener('mousedown',function(){
           page.launchNavigator.navigate(page.Viaje.Destino, { app: page.launchNavigator.APP.USER_SELECT});
-        });
+        }));
+        if(page.Viaje.Intermedios != null){
+          page.Viaje.Intermedios.forEach(element => {
+            var arrint = element.Posicion.split(" ");
+            page.markers.push(new google.maps.Marker({
+                position:new google.maps.LatLng(parseFloat(arrint[1]), parseFloat(arrint[0])),
+                map: page.map,
+                icon: "assets/imgs/icono-verde.png"
+              }).addListener('mousedown',function(){
+                page.launchNavigator.navigate(element.Direccion, { app: page.launchNavigator.APP.USER_SELECT});
+              }));
+            });
+        }
     
       } else {
         window.alert('Directions request failed due to ' + status);

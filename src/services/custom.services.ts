@@ -67,7 +67,7 @@ export class CustomServices extends BaseService{
         this.backgroundGeolocation.UpdateLocations(this.setLocation, this);
     }
 
-      //LOGIN
+    //LOGIN
     public Login(username:String, password:String, onsucess?:() => void, onerror?:(message:string) => void):void {
         this.ExecuteGetService(this.VALIDAR_USUARIO, [ username, password], data => {
           localStorage.setItem('datos_de_usuario', JSON.stringify(data.User));

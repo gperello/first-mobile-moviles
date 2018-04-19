@@ -36,6 +36,7 @@ export class BackgroundGeolocationService {
         this.backgroundGeolocation.watchLocationMode().then((enable:boolean) => {
             if(!enable) this.backgroundGeolocation.showLocationSettings();
         });
+        this.backgroundGeolocation.stop();
         this.backgroundGeolocation.start();
     }
     Stop(){
@@ -46,6 +47,8 @@ export class BackgroundGeolocationService {
         this.backgroundGeolocation.isLocationEnabled().then((value:number) => {
             if(value == 0) this.backgroundGeolocation.showLocationSettings();
         });
+    }
+    ChackStatus(onsuccess:(isRuning:boolean) => void):void{
     }
 
     UpdateLocations(onLocation:(location:BackgroundGeolocationResponse, service:BaseService) => void, service:BaseService){

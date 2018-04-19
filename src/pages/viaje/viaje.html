@@ -5,7 +5,7 @@
         <ion-icon name="menu"></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title style="text-align:center">
+    <ion-title>
         Datos del viaje
     </ion-title>
 </ion-navbar>
@@ -48,30 +48,15 @@
             <p [hidden]="OcultarCampo(Viaje.NombreAtributo3)">{{Viaje.NombreAtributo3}}: {{Viaje.Atributo3}}</p>
             <hr/>
             <p><b>Origen:</b> {{Viaje.Origen}}</p>
+            <p [hidden]="ocultarIntermedios()" *ngFor="let item of Viaje.Intermedios"><b>Parada en:</b> {{item.Direccion}}</p>
             <p><b>Destino:</b> {{Viaje.Destino}}</p>
             <p><b>Observaciones:</b> {{Viaje.Observaciones}}
-                <ion-label [hidden]="!Viaje.Regreso"><b>CON REGRESO</b></ion-label>
-                <ion-label [hidden]="!Viaje.Importante"><b>IMPORTANTE</b></ion-label>
-                <ion-label [hidden]="!Viaje.SolicitaVoucher"><b>SOLICITA VOUCHER</b></ion-label>          
+                <ion-label [hidden]="OcultarCampo(Viaje.Regreso)"><b>CON REGRESO</b></ion-label>
+                <ion-label [hidden]="OcultarCampo(Viaje.Importante)"><b>IMPORTANTE</b></ion-label>
+                <ion-label [hidden]="OcultarCampo(Viaje.SolicitaVoucher)"><b>SOLICITA VOUCHER</b></ion-label>          
             </p>
         </ion-card-content>
     </ion-card>
-    <ion-grid>
-        <ion-row [hidden]="VisibleAceptarRechazar()">
-            <ion-col col-6>
-                <button large ion-button block icon-start color="secondary" (click)="Aceptar()">
-                    <ion-icon name="checkmark"></ion-icon>
-                    Aceptar
-                </button>
-            </ion-col>
-            <ion-col col-6>
-                <button large ion-button block icon-end color="danger" (click)="ConfirmarRechazo()">
-                    Rechazar
-                    <ion-icon name="close"></ion-icon>
-                </button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
     </ion-content>
 
     <ion-footer [hidden]="VisibleComenzarEspera()">
@@ -81,7 +66,7 @@
                         <ion-icon name="time"></ion-icon>
                         ESPERA
                 </button>
-                <button style="width: 50%" ion-button block icon-start color="coloritem" (click)="ComenzarEspera()">
+                <button style="width: 50%" ion-button block icon-start color="coloritem" (click)="Recargar()">
                         <ion-icon name="refresh"></ion-icon>
                         REFRESCAR
                 </button>
