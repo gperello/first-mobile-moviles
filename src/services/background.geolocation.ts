@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
-import { Network } from '@ionic-native/network';
 import { BaseService } from './base.service';
+import { CustomServices } from './custom.services';
 
 @Injectable()
 export class BackgroundGeolocationService {
-    UltimaPosicion:number = 0;
-    constructor(private backgroundGeolocation: BackgroundGeolocation, private network:Network) { 
+    constructor(private backgroundGeolocation: BackgroundGeolocation) { 
     }
 
-    Init(onLocation:(location:BackgroundGeolocationResponse, service:BaseService) => void, service:BaseService){
-        const config: BackgroundGeolocationConfig = {
+    Init(service:BaseService){
+        const config:BackgroundGeolocationConfig = {
             desiredAccuracy: 10,
             stationaryRadius: 20,
             distanceFilter: 30,
@@ -22,21 +21,25 @@ export class BackgroundGeolocationService {
             fastestInterval: 15000,
             activitiesInterval: 30000,
             stopOnStillActivity: false,
+            maxLocations: 100, 
+            url: service.BASE_URL + service.ENVIAR_POSICION,
+            syncUrl: service.BASE_URL + service.ENVIAR_POSICION,
+            syncThreshold: 10,
+            startOnBoot: true,
+            user: service.UserData().MovilId.toString(),
+            /* httpHeaders:{ 
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem("token_de_usuario")
+            }, */
         };
 
         this.backgroundGeolocation.configure(config)
         .subscribe((location: BackgroundGeolocationResponse) => {
-            if((this.UltimaPosicion + 25000)  < location.time) {
-                onLocation(location, service);
-                this.UltimaPosicion = location.time;
-            }
-            this.backgroundGeolocation.deleteLocation(location.locationId);
             this.backgroundGeolocation.finish(); // FOR IOS ONLY
         });
         this.backgroundGeolocation.watchLocationMode().then((enable:boolean) => {
             if(!enable) this.backgroundGeolocation.showLocationSettings();
         });
-        this.backgroundGeolocation.stop();
         this.backgroundGeolocation.start();
     }
     Stop(){
@@ -48,23 +51,14 @@ export class BackgroundGeolocationService {
             if(value == 0) this.backgroundGeolocation.showLocationSettings();
         });
     }
-    ChackStatus(onsuccess:(isRuning:boolean) => void):void{
-    }
 
-    UpdateLocations(onLocation:(location:BackgroundGeolocationResponse, service:BaseService) => void, service:BaseService){
-       if(this.network.type != 'none'){
-            this.backgroundGeolocation.getLocations().then((locations) => {
-                locations.forEach(element => {
-                    if((this.UltimaPosicion + 25000)  < element.time) {
-                        onLocation(element, service);
-                        this.UltimaPosicion = element.time;
-                    }
-                    this.backgroundGeolocation.deleteLocation(element.locationId);
-                });
+    SendLocations(service:CustomServices){
+        this.backgroundGeolocation.getValidLocations().then((locations) => {
+            locations.forEach(element => {
+                service.setLocation(element);
+                this.backgroundGeolocation.deleteLocation(element.locationId);
             });
-       }
+        });
     }
-
-    
 
 } 

@@ -9,16 +9,18 @@
         Datos del viaje
     </ion-title>
 </ion-navbar>
-<ion-toolbar color="first1">
+<ion-toolbar color="light">
     <ion-segment>
-        <ion-segment-button (ionSelect)="getMapa()">
-            <ion-icon name="map"></ion-icon>
-            <span>Mapa</span>
-        </ion-segment-button>
-        <ion-segment-button (ionSelect)="llamar()">
-            <ion-icon name="call"></ion-icon>
-            <span>Llamar</span>
-        </ion-segment-button>
+        <ion-segment>
+            <button style="width: 50%" ion-button icon-start color="secondary" (click)="getMapa()">
+                <ion-icon name="map"></ion-icon>
+                MAPA
+            </button>
+            <button style="width: 50%" ion-button block icon-start color="primary" (click)="llamar()">
+                    <ion-icon name="call"></ion-icon>
+                    LLAMAR
+            </button>
+        </ion-segment>
     </ion-segment>
 </ion-toolbar>
 </ion-header>
@@ -56,7 +58,7 @@
         <ion-row [hidden]="VisibleComenzarEspera()">
             <ion-col col-12>        
                 <span item-start>Minutos de Espera</span>
-                <ion-badge item-end color="secondary"> {{Viaje.Espera}}</ion-badge>
+                <ion-badge item-end color="secondary" style="font-size: 2rem"> {{Viaje.Espera}}</ion-badge>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -64,13 +66,14 @@
     <ion-card no-padding>
         <ion-card-content>
             <h2>Cliente: {{Viaje.Cliente}}</h2>
-            <p>Pasajero: {{Viaje.Pasajero}}</p>
+            <p style="font-size: 1.8rem;font-weight: bold; text-transform: uppercase">Pasajero: {{Viaje.Pasajero}}</p>
             <p [hidden]="OcultarCampo(Viaje.NombreAtributoFacturacion)">{{Viaje.NombreAtributoFacturacion}}: {{Viaje.AtributoFacturacion}}</p>
             <p [hidden]="OcultarCampo(Viaje.NombreAtributo1)">{{Viaje.NombreAtributo1}}: {{Viaje.Atributo1}}</p>
             <p [hidden]="OcultarCampo(Viaje.NombreAtributo2)">{{Viaje.NombreAtributo2}}: {{Viaje.Atributo2}}</p>
             <p [hidden]="OcultarCampo(Viaje.NombreAtributo3)">{{Viaje.NombreAtributo3}}: {{Viaje.Atributo3}}</p>
             <hr/>
-            <p><b>Origen:</b> {{Viaje.Origen}}</p>
+            <p style="font-size: 1.8rem;font-weight: bold; text-transform: uppercase"><b>Origen:</b> {{Viaje.Origen}}</p>
+            <p><b>Referencias:</b> {{Viaje.Referencias}}</p>
             <p [hidden]="ocultarIntermedios()" *ngFor="let item of Viaje.Intermedios"><b>Parada en:</b> {{item.Direccion}}</p>
             <p><b>Destino:</b> {{Viaje.Destino}}</p>
             <p><b>Observaciones:</b> {{Viaje.Observaciones}}

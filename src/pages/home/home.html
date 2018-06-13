@@ -36,3 +36,14 @@
       </button>
   </ion-card>
 </ion-content>
+<ion-footer [hidden]="MismaVersion()">
+  <ion-toolbar>
+      <ion-segment>
+          <button ion-button block icon-start color="secondary" (click)="GoToVersion()">
+                  <ion-icon name="check"></ion-icon>
+                  NUEVA VERSION
+          </button>
+      </ion-segment>
+  </ion-toolbar>
+</ion-footer>
+

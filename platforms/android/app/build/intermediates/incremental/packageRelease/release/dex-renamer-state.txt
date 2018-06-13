@@ -1,4 +1,0 @@
-#Thu Apr 19 17:27:17 ART 2018
-base.0=D\:\\apps\\first-mobile-moviles\\platforms\\android\\app\\build\\intermediates\\transforms\\dex\\release\\0
-path.0=classes.dex
-renamed.0=classes.dex

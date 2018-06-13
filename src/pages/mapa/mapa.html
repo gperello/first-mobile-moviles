@@ -9,16 +9,18 @@
           Mapa del Viaje
       </ion-title>
     </ion-navbar>
-    <ion-toolbar color="first1">
+    <ion-toolbar color="light">
         <ion-segment>
-            <ion-segment-button (ionSelect)="getInfo()">
-                <ion-icon name="information-circle"></ion-icon>
-                <span>Info</span>
-            </ion-segment-button>
-            <ion-segment-button (ionSelect)="llamar()">
-                <ion-icon name="call"></ion-icon>
-                <span>Llamar</span>
-            </ion-segment-button>
+            <ion-segment>
+                <button style="width: 50%" ion-button icon-start color="secondary" (click)="getInfo()">
+                    <ion-icon name="information-circle"></ion-icon>
+                    INFO
+                </button>
+                <button style="width: 50%" ion-button block icon-start color="primary" (click)="llamar()">
+                        <ion-icon name="call"></ion-icon>
+                        LLAMAR
+                </button>
+            </ion-segment>
         </ion-segment>
     </ion-toolbar>
   </ion-header>

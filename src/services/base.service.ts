@@ -4,14 +4,14 @@ import { Usuario } from './clases';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import { Posicion } from './clases';
 import { Http, Headers } from '@angular/http';
-import { BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+import { BackgroundGeolocationService } from './background.geolocation';
 declare var google;
 
 @Injectable()
 export class BaseService {
     public loader:Loading;
     constructor(protected http:Http, protected alert:AlertController, 
-        protected geolocation: Geolocation, protected loadingService:LoadingController) {
+        protected geolocation: Geolocation, protected loadingService:LoadingController, protected backgroundGeolocation:BackgroundGeolocationService) {
         this.loader = this.loadingService.create({ content: "Aguarde..." });
     }
 
@@ -30,7 +30,7 @@ export class BaseService {
   GET_VIAJES_TURNOS = "appservice/getviajesturno/{0}";
   REGISTRAR_GCM = "appservice/registrargcm";
   VALIDAR_USUARIO = "appservice/login/{0}/{1}";
-  ENVIAR_POSICION = "appservice/setposicion";
+  ENVIAR_POSICION = "appservice/setposicionlista";
   LOGOUT = "appservice/logout/{0}";
 
   //HTTP
@@ -58,6 +58,7 @@ export class BaseService {
           if(error.status == 401){
               localStorage.removeItem('datos_de_usuario');
               localStorage.removeItem('token_de_usuario');
+              this.backgroundGeolocation.Stop();
               if(this.OnNotAuthenticate != null) this.OnNotAuthenticate();
           }
           else this.showAlert("ERROR", JSON.stringify(error));
@@ -86,6 +87,7 @@ export class BaseService {
           if(error.status == 401){
               localStorage.removeItem('datos_de_usuario');
               localStorage.removeItem('token_de_usuario');
+              this.backgroundGeolocation.Stop();
               if(this.OnNotAuthenticate != null) this.OnNotAuthenticate();
           }
           else this.showAlert("ERROR", JSON.stringify(error));
@@ -216,33 +218,34 @@ export class BaseService {
     }
   }
 
-  //SET LOCATIONS
-  setLocation(location:BackgroundGeolocationResponse, service:BaseService){
-    var User = JSON.parse(localStorage.getItem("datos_de_usuario"));
-    var pos:Posicion = {
-      accuracy: location.accuracy,
-      latitude: location.latitude,
-      longitude: location.longitude,
-      time: location.time,
-      movid: User.MovilId,
-    };
-    service.ExecutePostService(service.ENVIAR_POSICION, pos);
-  }
-
   public setLocationGeoposition(location:Geoposition, onsuccess?:(data:string) => void){
-    var pos:Posicion = {
-      accuracy: location.coords.accuracy,
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-      time: location.timestamp,
-      movid: this.UserData().MovilId,
-    };
-    var geocoder = new google.maps.Geocoder;
-    geocoder.geocode({ 'location': { lat: location.coords.latitude, lng: location.coords.longitude } }, function (results, status) {
-        if (status === 'OK' && results[0] && onsuccess != null) onsuccess(results[0].formatted_address);
-    });
-    this.ExecutePostService(this.ENVIAR_POSICION, pos);
+        /* var pos:Posicion = {
+            accuracy: location.coords.accuracy,
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            time: location.timestamp,
+            user: this.UserData().MovilId.toString(),
+        }; */
+        var geocoder = new google.maps.Geocoder;
+        geocoder.geocode({ 'location': { lat: location.coords.latitude, lng: location.coords.longitude } }, function (results, status) {
+            if (status === 'OK' && results[0] && onsuccess != null) onsuccess(results[0].formatted_address);
+        });
+        //let list:Array<any> = new Array<any>();
+        //list.push(pos);
+        //this.ExecutePostService(this.ENVIAR_POSICION, list);
   }
+  public setLocation(location){
+    var pos:Posicion = {
+        accuracy: location.accuracy,
+        latitude: location.latitude,
+        longitude: location.longitude,
+        time: location.time,
+        user: this.UserData().MovilId.toString(),
+    };
+    let list:Array<any> = new Array<any>();
+    list.push(pos);
+    this.ExecutePostService(this.ENVIAR_POSICION, list);
+}
 
 
 }

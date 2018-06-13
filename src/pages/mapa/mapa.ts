@@ -107,7 +107,7 @@ export class PageMapa {
           position: { lng: parseFloat(arr1[0]), lat: parseFloat(arr1[1]) },
           map: page.map,
           icon: "assets/imgs/icono-azul.png"
-        }).addListener('mousedown', function(){
+        }).addListener('click', function(){
           page.launchNavigator.navigate(page.Viaje.Origen, { app: page.launchNavigator.APP.USER_SELECT});
         }));
         var arr2 = page.Viaje.DestinoPosicion.split(' ');
@@ -115,7 +115,7 @@ export class PageMapa {
           position: { lng: parseFloat(arr2[0]), lat: parseFloat(arr2[1]) },
           map: page.map,
           icon: "assets/imgs/icono-rojo.png"
-        }).addListener('mousedown',function(){
+        }).addListener('click',function(){
           page.launchNavigator.navigate(page.Viaje.Destino, { app: page.launchNavigator.APP.USER_SELECT});
         }));
         if(page.Viaje.Intermedios != null){
@@ -125,7 +125,7 @@ export class PageMapa {
                 position:new google.maps.LatLng(parseFloat(arrint[1]), parseFloat(arrint[0])),
                 map: page.map,
                 icon: "assets/imgs/icono-verde.png"
-              }).addListener('mousedown',function(){
+              }).addListener('click',function(){
                 page.launchNavigator.navigate(element.Direccion, { app: page.launchNavigator.APP.USER_SELECT});
               }));
             });

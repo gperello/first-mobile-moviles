@@ -14,7 +14,7 @@ import { BaseService } from '../services/base.service';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { Push } from '@ionic-native/push';
+import { FCM } from '@ionic-native/fcm';
 import { Network } from '@ionic-native/network';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { BackgroundGeolocationService } from '../services/background.geolocation';
@@ -67,7 +67,7 @@ import { CallNumber } from '@ionic-native/call-number';
     TabsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
-    Push,
+    FCM,
     Network,
     BackgroundGeolocation,
     BackgroundGeolocationService,

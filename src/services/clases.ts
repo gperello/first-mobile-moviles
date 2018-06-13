@@ -23,7 +23,7 @@ export class ViajeList
     }
 export class Posicion {
 
-    public movid:number
+    public user:string
     public time:number
     public latitude:number
     public longitude:number

@@ -1,23 +1,4 @@
 {
-  "cordova-plugin-mauron85-background-geolocation": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-mauron85-background-geolocation@^2.3.5"
-    },
-    "is_top_level": true,
-    "variables": {
-      "ALWAYS_USAGE_DESCRIPTION": "App requires background tracking enabled",
-      "MOTION_USAGE_DESCRIPTION": "App requires motion detection",
-      "GOOGLE_PLAY_SERVICES_VERSION": "11.+",
-      "ANDROID_SUPPORT_LIBRARY_VERSION": "23+",
-      "ICON": "@mipmap/icon",
-      "SMALL_ICON": "@mipmap/icon",
-      "ACCOUNT_NAME": "@string/app_name",
-      "ACCOUNT_LABEL": "@string/app_name",
-      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-      "CONTENT_AUTHORITY": "$PACKAGE_NAME"
-    }
-  },
   "cordova-plugin-network-information": {
     "source": {
       "type": "registry",
@@ -108,10 +89,27 @@
     "is_top_level": true,
     "variables": {}
   },
-  "phonegap-plugin-push": {
+  "cordova-plugin-mauron85-background-geolocation": {
     "source": {
       "type": "registry",
-      "id": "phonegap-plugin-push@2.2.2"
+      "id": "cordova-plugin-mauron85-background-geolocation@2.3.5"
+    },
+    "is_top_level": true,
+    "variables": {
+      "GOOGLE_PLAY_SERVICES_VERSION": "11+",
+      "ANDROID_SUPPORT_LIBRARY_VERSION": "23+",
+      "ICON": "@mipmap/icon",
+      "SMALL_ICON": "@mipmap/icon",
+      "ACCOUNT_NAME": "@string/app_name",
+      "ACCOUNT_LABEL": "@string/app_name",
+      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+      "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+    }
+  },
+  "cordova-plugin-fcm": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-fcm"
     },
     "is_top_level": true,
     "variables": {}

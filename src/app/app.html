@@ -1,18 +1,18 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar color="first2">
+    <ion-toolbar color="first1">
       <ion-title>FIRST SRL</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content style="background-color:#dadada">
+  <ion-content>
     <ion-list>
         <button color="first5" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
             {{p.title}}
-          </button>
-          <button color="first5" menuClose ion-item  (click)="Logout()">
+        </button>
+        <button color="first5" menuClose ion-item  (click)="Logout()">
              Cerrar Sesion
-          </button>
+        </button>
     </ion-list>
   </ion-content>
 

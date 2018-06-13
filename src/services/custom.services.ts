@@ -12,7 +12,7 @@ export class CustomServices extends BaseService{
     constructor(protected http:Http, protected alert:AlertController, 
         protected geolocation: Geolocation, protected loadingService:LoadingController, 
         protected push:PushNotificationService, protected backgroundGeolocation:BackgroundGeolocationService){
-        super(http, alert, geolocation, loadingService);
+        super(http, alert, geolocation, loadingService, backgroundGeolocation);
     }
     //CIERRE
     public RecalcularViaje(reserva, onsucess?:(data) => void){
@@ -61,19 +61,16 @@ export class CustomServices extends BaseService{
           onsucess(data);
           this.hideLoading();
         });
+        //this.backgroundGeolocation.SendLocations(this);
     }
 
-    public initComponent(onsucess?:(data) => void){
-        this.getViajes(onsucess);
-        this.backgroundGeolocation.UpdateLocations(this.setLocation, this);
-    }
 
     //LOGIN
     public Login(username:String, password:String, onsucess?:() => void, onerror?:(message:string) => void):void {
         this.ExecuteGetService(this.VALIDAR_USUARIO, [ username, password], data => {
           localStorage.setItem('datos_de_usuario', JSON.stringify(data.User));
           localStorage.setItem('token_de_usuario', data.Token);
-          this.backgroundGeolocation.Init(this.setLocation, this);
+          this.backgroundGeolocation.Init(this);
           this.push.Init(this.RegistracionFcm, this);
           if(onsucess != null)onsucess();
           this.hideLoading();

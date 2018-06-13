@@ -1,19 +1,19 @@
 {
-  "_from": "cordova-plugin-mauron85-background-geolocation@^2.3.5",
+  "_from": "cordova-plugin-mauron85-background-geolocation@2.3.5",
   "_id": "cordova-plugin-mauron85-background-geolocation@2.3.5",
   "_inBundle": false,
   "_integrity": "sha1-xePrD5+W1CeJLghDNNik4jqA8AE=",
   "_location": "/cordova-plugin-mauron85-background-geolocation",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-mauron85-background-geolocation@^2.3.5",
+    "raw": "cordova-plugin-mauron85-background-geolocation@2.3.5",
     "name": "cordova-plugin-mauron85-background-geolocation",
     "escapedName": "cordova-plugin-mauron85-background-geolocation",
-    "rawSpec": "^2.3.5",
+    "rawSpec": "2.3.5",
     "saveSpec": null,
-    "fetchSpec": "^2.3.5"
+    "fetchSpec": "2.3.5"
   },
   "_requiredBy": [
     "#USER",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-mauron85-background-geolocation/-/cordova-plugin-mauron85-background-geolocation-2.3.5.tgz",
   "_shasum": "c5e3eb0f9f96d427892e084334d8a4e23a80f001",
-  "_spec": "cordova-plugin-mauron85-background-geolocation@^2.3.5",
+  "_spec": "cordova-plugin-mauron85-background-geolocation@2.3.5",
   "_where": "D:\\apps\\first-mobile-moviles",
   "author": "",
   "bugs": {
