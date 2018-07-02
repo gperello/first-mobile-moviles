@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AlertController, Loading, LoadingController  } from 'ionic-angular';
 import { Usuario } from './clases';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import { Posicion } from './clases';
 import { Http, Headers } from '@angular/http';
 import { BackgroundGeolocationService } from './background.geolocation';
+import { Geoposition } from 'ionic-native';
 declare var google;
 
 @Injectable()
@@ -31,6 +32,8 @@ export class BaseService {
   REGISTRAR_GCM = "appservice/registrargcm";
   VALIDAR_USUARIO = "appservice/login/{0}/{1}";
   ENVIAR_POSICION = "appservice/setposicionlista";
+  ENVIAR_UNA_POSICION = "appservice/setposicion";
+  CAMBIO_DE_CLAVE = "appservice/cambiarclave";
   LOGOUT = "appservice/logout/{0}";
 
   //HTTP
@@ -128,11 +131,15 @@ export class BaseService {
   }
 
   //GET POSICION
-  public getPosition(onsuccess?:(data:string) => void){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.setLocationGeoposition(resp, onsuccess);
+  public getPosition(onsuccess:(data:string, pos:Geoposition) => void){
+    this.geolocation.getCurrentPosition({ maximumAge: 60000 }).then((resp) => {
+        var geocoder = new google.maps.Geocoder;
+        geocoder.geocode({ 'location': { lat: resp.coords.latitude, lng: resp.coords.longitude } }, 
+        function (results, status) {
+            if (status === 'OK' && results[0])onsuccess(results[0].formatted_address, resp);
+        });
      }).catch((error) => {
-       this.showAlert("ERROR DE GEOPOSICION", JSON.stringify(error));
+       this.showAlert("ERROR DE GEOPOSICION", "El GPS no pudo obtener posición.");
      });
   }
 
@@ -218,34 +225,32 @@ export class BaseService {
     }
   }
 
-  public setLocationGeoposition(location:Geoposition, onsuccess?:(data:string) => void){
-        /* var pos:Posicion = {
+ /*  public setLocationGeoposition(location:Geoposition, onsuccess?:(data:string, pos:Posicion) => void){
+        var pos:Posicion = {
             accuracy: location.coords.accuracy,
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
             time: location.timestamp,
             user: this.UserData().MovilId.toString(),
-        }; */
-        var geocoder = new google.maps.Geocoder;
-        geocoder.geocode({ 'location': { lat: location.coords.latitude, lng: location.coords.longitude } }, function (results, status) {
-            if (status === 'OK' && results[0] && onsuccess != null) onsuccess(results[0].formatted_address);
-        });
-        //let list:Array<any> = new Array<any>();
-        //list.push(pos);
-        //this.ExecutePostService(this.ENVIAR_POSICION, list);
-  }
-  public setLocation(location){
+        };
+        this.ExecutePostService(this.ENVIAR_UNA_POSICION, pos);
+        if (onsuccess != null){
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({ 'location': { lat: location.coords.latitude, lng: location.coords.longitude } }, function (results, status) {
+                if (status === 'OK' && results[0])onsuccess(results[0].formatted_address, pos);
+            });
+        }
+  } */
+
+  public EnviarPosicion(resp){
     var pos:Posicion = {
-        accuracy: location.accuracy,
-        latitude: location.latitude,
-        longitude: location.longitude,
-        time: location.time,
+        accuracy: resp.coords.accuracy,
+        latitude: resp.coords.latitude,
+        longitude: resp.coords.longitude,
+        time: resp.timestamp,
         user: this.UserData().MovilId.toString(),
     };
-    let list:Array<any> = new Array<any>();
-    list.push(pos);
-    this.ExecutePostService(this.ENVIAR_POSICION, list);
-}
-
-
+    this.ExecutePostService(this.ENVIAR_UNA_POSICION, pos);
+  }
+  
 }

@@ -122,6 +122,18 @@ export class CustomServices extends BaseService{
           this.hideLoading();
         });
     }
+
+    //CAMBIAR CLAVE
+    public CambiarClave(claveactual, nuevaclave, onsuccess:(data) => void){
+        this.ExecutePostService(this.CAMBIO_DE_CLAVE, {
+            UsuarioId: this.UserData().UsuarioId,
+            ClaveActual: claveactual,
+            ClaveNueva: nuevaclave
+        }, data => {
+            onsuccess(data);
+            this.hideLoading();
+        });
+    }
     
     //REGISTRATION FCM
     public RegistracionFcm(regid, service:CustomServices){
@@ -131,5 +143,5 @@ export class CustomServices extends BaseService{
             RegistrationId: regid
         });
     }
-
+     
 }

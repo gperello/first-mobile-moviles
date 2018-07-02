@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="first1">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align:center">
+        <img src="assets/imgs/first-logo.png">
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="Logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding="">
+   <h2 style="text-align:center">Cambio de Clave</h2>
+  <ion-row>
+  <ion-col>
+    <ion-list>
+        <ion-item>
+          <ion-input placeholder="Clave Actual" type="password" [(ngModel)]="actual"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Nueva Clave" type="password" [(ngModel)]="nueva"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Repetir Clave" type="password" [(ngModel)]="repetir"></ion-input>
+        </ion-item>
+    </ion-list>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <button ion-button color="danger" full (click)="CambiarClave()">
+      Cambiar Clave
+    </button>
+  </ion-col>
+</ion-row>
+</ion-content>

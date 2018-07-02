@@ -92,8 +92,8 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "cordova-plugin-mauron85-background-geolocation/ar-logtofile.gradle"
 apply from: "cordova-plugin-fcm/ar-FCMPlugin.gradle"
+apply from: "cordova-plugin-mauron85-background-geolocation/ar-logtofile.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -255,11 +255,11 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile(project(path: "CordovaLib", configuration: "debug"))
     releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    compile "com.google.firebase:firebase-core:+"
+    compile "com.google.firebase:firebase-messaging:+"
     compile "com.google.android.gms:play-services-location:9.0.0"
     compile "com.android.support:support-v4:23+"
     compile "com.squareup.okhttp3:okhttp:3+"
-    compile "com.google.firebase:firebase-core:+"
-    compile "com.google.firebase:firebase-messaging:+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

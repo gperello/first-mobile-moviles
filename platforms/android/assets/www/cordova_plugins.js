@@ -41,18 +41,12 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-geolocation.geolocation",
-    "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-    "pluginId": "cordova-plugin-geolocation",
+    "id": "cordova-plugin-fcm.FCMPlugin",
+    "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
+    "pluginId": "cordova-plugin-fcm",
     "clobbers": [
-      "navigator.geolocation"
+      "FCMPlugin"
     ]
-  },
-  {
-    "id": "cordova-plugin-geolocation.PositionError",
-    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-    "pluginId": "cordova-plugin-geolocation",
-    "runs": true
   },
   {
     "id": "cordova-plugin-ionic-keyboard.keyboard",
@@ -120,12 +114,18 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-fcm.FCMPlugin",
-    "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
-    "pluginId": "cordova-plugin-fcm",
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
     "clobbers": [
-      "FCMPlugin"
+      "navigator.geolocation"
     ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -135,7 +135,7 @@ module.exports.metadata =
   "cordova-plugin-actionsheet": "2.3.3",
   "cordova-plugin-device": "2.0.1",
   "cordova-plugin-dialogs": "2.0.1",
-  "cordova-plugin-geolocation": "4.0.1",
+  "cordova-plugin-fcm": "2.1.2",
   "cordova-plugin-ionic-keyboard": "2.0.5",
   "cordova-plugin-ionic-webview": "1.2.0",
   "cordova-plugin-mauron85-background-geolocation": "2.3.5",
@@ -143,7 +143,7 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-whitelist": "1.3.3",
   "uk.co.workingedge.phonegap.plugin.launchnavigator": "4.2.0",
-  "cordova-plugin-fcm": "2.1.2"
+  "cordova-plugin-geolocation": "2.4.3"
 };
 // BOTTOM OF METADATA
 });

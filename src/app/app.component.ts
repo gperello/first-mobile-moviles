@@ -7,6 +7,8 @@ import { PageEstadistica } from '../pages/estadistica/estadistica';
 import { PageLogin } from '../pages/login/login';
 import { PageEstadisticaViajes } from '../pages/estadistica/estadistica.viajes';
 import { CustomServices } from '../services/custom.services';
+import { PageConsejos } from '../pages/consejos/consejos';
+import { PageCambioClave } from '../pages/cambioclave/cambioclave';
 
 
 @Component({
@@ -28,6 +30,8 @@ export class MyApp {
       { title: 'Inicio', component: PageHome },
       { title: 'Viajes del dia', component: PageEstadisticaViajes },
       { title: 'Facturacion', component: PageEstadistica },
+      { title: 'Consejos Útiles', component: PageConsejos },
+      { title: 'Cambio de Clave', component: PageCambioClave },
     ];
 
   }

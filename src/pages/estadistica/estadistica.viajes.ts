@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { EstadisticaViaje } from '../../services/clases';
 import { PageViajeCerrado } from '../viaje.cerrado/viaje-cerrado';
 import { CustomServices } from '../../services/custom.services';
@@ -14,7 +14,7 @@ export class PageEstadisticaViajes {
   Mes:string;
   Dia:string;
   Titulo:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, protected service:CustomServices) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, protected service:CustomServices, private alert:AlertController) {
     if(this.navParams.data.Mes == undefined){
       this.service.getViajesTurno((data) => {
         this.List = data.List;
@@ -52,5 +52,30 @@ export class PageEstadisticaViajes {
   getcolor(fp):string{
     return this.service.setColorFormaPago(fp);
 }
+
+Logout(){
+  let alert = this.alert.create({
+    title: 'Cerrar Sesión?',
+    message: 'Si cierra sesión su móvil dejará de posicionar',
+    buttons: [
+      {
+        text: 'NO',
+        role: 'cancel',
+        handler: () => {
+          
+        }
+      },
+      {
+        text: 'SI',
+        handler: () => {
+          this.service.Logout((data) =>{
+              this.navCtrl.setRoot(PageLogin);
+          });
+        }
+      }
+    ]
+  });
+  alert.present();
+};
 
 }

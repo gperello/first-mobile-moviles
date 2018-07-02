@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { EstadisticaMensual } from '../../services/clases';
 import { PageEstadisticaDiaria } from './estadistica.diaria';
 import { CustomServices } from '../../services/custom.services';
@@ -11,7 +11,7 @@ import { PageLogin } from '../login/login';
 })
 export class PageEstadistica {
   List:Array<EstadisticaMensual>;
-  constructor(protected nav: NavController, public navParams: NavParams, public service:CustomServices) {
+  constructor(protected nav: NavController, public navParams: NavParams, public service:CustomServices, private alert:AlertController) {
       this.service.getEstadisticaMensual((data) => {
         this.List = data.List;
       });
@@ -27,10 +27,29 @@ export class PageEstadistica {
   }
 
   Logout(){
-    this.service.Logout((data) =>{
-      this.nav.setRoot(PageLogin);
+    let alert = this.alert.create({
+      title: 'Cerrar Sesión?',
+      message: 'Si cierra sesión su móvil dejará de posicionar',
+      buttons: [
+        {
+          text: 'NO',
+          role: 'cancel',
+          handler: () => {
+            
+          }
+        },
+        {
+          text: 'SI',
+          handler: () => {
+            this.service.Logout((data) =>{
+                this.nav.setRoot(PageLogin);
+            });
+          }
+        }
+      ]
     });
-  }
+    alert.present();
+  };
 
 
   get getTotal(){

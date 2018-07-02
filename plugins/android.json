@@ -16,7 +16,7 @@
     "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "first.moviles.ar"
     },
-    "cordova-plugin-geolocation": {
+    "cordova-plugin-fcm": {
       "PACKAGE_NAME": "first.moviles.ar"
     },
     "cordova-plugin-ionic-keyboard": {
@@ -48,7 +48,7 @@
     "uk.co.workingedge.phonegap.plugin.launchnavigator": {
       "PACKAGE_NAME": "first.moviles.ar"
     },
-    "cordova-plugin-fcm": {
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "first.moviles.ar"
     }
   },

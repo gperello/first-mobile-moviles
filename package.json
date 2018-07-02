@@ -35,13 +35,14 @@
     "@ionic/pro": "1.0.20",
     "@ionic/storage": "2.1.3",
     "call-number": "^1.0.1",
-    "cordova-android": "^6.3.0",
+    "cordova-android": "6.3.0",
     "cordova-browser": "^5.0.3",
     "cordova-plugin-actionsheet": "^2.3.3",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-dialogs": "^2.0.1",
     "cordova-plugin-fcm": "^2.1.2",
-    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-geolocation": "^2.4.3",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.2.0",
     "cordova-plugin-mauron85-background-geolocation": "^2.3.5",
@@ -70,9 +71,6 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-geolocation": {
-        "GEOLOCATION_USAGE_DESCRIPTION": "Tu localizacion"
-      },
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
       "mx.ferreyra.callnumber": {},
       "call-number": {},
@@ -87,7 +85,8 @@
         "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
         "CONTENT_AUTHORITY": "$PACKAGE_NAME"
       },
-      "cordova-plugin-fcm": {}
+      "cordova-plugin-fcm": {},
+      "cordova-plugin-geolocation": {}
     },
     "platforms": [
       "browser",

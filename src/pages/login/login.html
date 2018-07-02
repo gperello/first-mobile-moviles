@@ -7,14 +7,14 @@
   </ion-header>
   
 <ion-content padding>
-  <ion-row>
-    <ion-col text-center>
-      <h1>INICIO DE SESION</h1>
-    </ion-col>
-  </ion-row>
-  <div>
+  <div style="background-color: #ffffff" padding>
     <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-      <ion-row class="inputlogin">
+      <ion-row>
+        <ion-col text-center>
+          <h1>INICIO DE SESION</h1>
+        </ion-col>
+      </ion-row>
+        <ion-row class="inputlogin" >
         <ion-col>
           <ion-list>
             <ion-item>
@@ -33,7 +33,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <button ion-button color="danger" full large type="submit" [disabled]="!loginForm.form.valid">
+          <button ion-button color="danger" full type="submit">
             Iniciar Sesión
           </button>
         </ion-col>

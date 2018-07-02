@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
 import { BaseService } from './base.service';
-import { CustomServices } from './custom.services';
 
 @Injectable()
 export class BackgroundGeolocationService {
@@ -32,7 +31,6 @@ export class BackgroundGeolocationService {
                 'Authorization': localStorage.getItem("token_de_usuario")
             }, */
         };
-
         this.backgroundGeolocation.configure(config)
         .subscribe((location: BackgroundGeolocationResponse) => {
             this.backgroundGeolocation.finish(); // FOR IOS ONLY
@@ -51,14 +49,4 @@ export class BackgroundGeolocationService {
             if(value == 0) this.backgroundGeolocation.showLocationSettings();
         });
     }
-
-    SendLocations(service:CustomServices){
-        this.backgroundGeolocation.getValidLocations().then((locations) => {
-            locations.forEach(element => {
-                service.setLocation(element);
-                this.backgroundGeolocation.deleteLocation(element.locationId);
-            });
-        });
-    }
-
 } 

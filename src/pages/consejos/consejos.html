@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="first1" hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style="text-align:center">
+        <img src="assets/imgs/first-logo.png">
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="Logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h4>Consejos Útiles</h4>
+  <p>Si su dispositivo no posiciona correctamente es posible que First no le pueda asignar viajes correctamente.</p>
+  <ul>
+    <li>
+        <h5>Verificar que el servicio de posicionamiento está activo</h5>
+        <p>En la barra superior a la izquierda se encuentra el icono correspondiente que debe estar visible todo el tiempo que el móvil esté en servicio. </p>
+        <p><img src="assets/imgs/icono-servicio.jpg" /></p>
+    </li>
+    <li>
+      <h5>Quitar el optimizador de batería de Android (Android 6 o superior)</h5>
+      <p>Ajustes > Batería </p>
+      <p>Si la optimización del uso de batería está activo es posible que Android termine automáticamente con el servicio de posicionamiento.</p>
+      <p>Puede desactivar por completo la optimazición de batería mientras utiliza el sistema o en algunas versiones de Android se puede quitar solo a esta app del control de uso de batería.</p>
+      <p><img src="assets/imgs/ahorro-bateria.jpg" /></p>
+    </li>
+    <li>
+      <h5>Verificar que el dispositivo permite acceder a su ubicación</h5>
+      <p>Ajustes > Ubicación > Permitir acceder a la ubicación del dispositivo </p>
+      <p>En algunos dispositivo mas nuevos esto está dentro de la opción "Servicios de google"</p>
+      <p><img src="assets/imgs/acceso-ubicacion.jpg" /></p>
+    </li>
+    <li>
+      <h5>Verificar que la app de First tiene permisos para acceder a la ubicación del dispositivo</h5>
+      <p>Ajustes > Aplicaciones > First Moviles > Permisos > Verificar que el permiso de ubicación está activado</p>
+      <p><img src="assets/imgs/permisos-app.jpg" /></p>
+    </li>
+  </ul>
+ 
+</ion-content>
+
+

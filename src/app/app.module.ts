@@ -7,6 +7,8 @@ import { PageViaje } from '../pages/viaje/viaje';
 import { PageMapa } from '../pages/mapa/mapa';
 import { PageCierre } from '../pages/cierre/cierre';
 import { PageLogin } from '../pages/login/login';
+import { PageConsejos } from '../pages/consejos/consejos';
+import { PageCambioClave } from '../pages/cambioclave/cambioclave';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { CustomServices } from '../services/custom.services';
@@ -40,7 +42,8 @@ import { CallNumber } from '@ionic-native/call-number';
     PageMapa,
     PageCierre,
     PageLogin,
-    PageLogin,
+    PageCambioClave,
+    PageConsejos,
     TabsPage,
     
   ],
@@ -62,7 +65,8 @@ import { CallNumber } from '@ionic-native/call-number';
     PageMapa,
     PageCierre,
     PageLogin,
-    PageLogin,
+    PageCambioClave,
+    PageConsejos,
     PageViajeCerrado,
     TabsPage
   ],
